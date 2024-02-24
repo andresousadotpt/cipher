@@ -1,2 +1,0 @@
-def encrypt():
-    print('encrypt')
