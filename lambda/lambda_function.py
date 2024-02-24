@@ -4,7 +4,13 @@ import json
 
 
 def lambda_handler(event, context):
-    action = event['queryStringParameters']['action']
+    try:
+        action = event['queryStringParameters']['action']
+    except Exception:
+        return {
+            'statusCode': 400,
+            'body': json.dumps("No action provided. Please use 'encrypt' or 'decrypt' as action.")
+        }
 
     if action == 'encrypt':
         body = util.verify_field("body", event)
