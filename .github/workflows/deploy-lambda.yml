@@ -28,6 +28,7 @@ jobs:
         run: |
           echo "List of changed files:" 
           echo $(git diff --name-only HEAD^ HEAD)
+
       - name: Deploy Modified Files
         run: |
           # Constants
@@ -36,25 +37,31 @@ jobs:
           LAMBDA_FUNCTION_NAME=cipher-andresousa-pt
           # Download the existing zip from S3
           aws s3 cp s3://$S3_BUCKET/$S3_KEY existing_lambda.zip
-          # Unzip the existing package
-          unzip existing_lambda.zip
-          # Copy only the modified .py files from the commit into the unzipped directory
-          # This will maintain their directory structure.
-          for file in $(git diff-tree --no-commit-id --name-only -r HEAD); do
-              if [[ $file == *.py ]]; then
-                  # Copy the modified file
-                  cp $file $file
-                  # Print what you've done with the file
-                  echo "Copied $file to $file"
-                  echo "Content of $file after copying:"
-                  cat $file
-              fi
-          done
-          # Zip the directory again
-          zip -r updated_lambda.zip .
-          # Upload the updated zip to S3
-          aws s3 cp updated_lambda.zip s3://$S3_BUCKET/$S3_KEY
-          # Update Lambda function code
-          aws lambda update-function-code --function-name $LAMBDA_FUNCTION_NAME --s3-bucket $S3_BUCKET --s3-key $S3_KEY
-          # Cleanup
-          rm existing_lambda.zip updated_lambda.zip
+          # Check if the zip file exists and is valid
+          if [ -f "existing_lambda.zip" ] && unzip -tq existing_lambda.zip; then
+            # Unzip the existing package
+            unzip existing_lambda.zip
+            # Copy only the modified .py files from the commit into the unzipped directory
+            # This will maintain their directory structure.
+            for file in $(git diff-tree --no-commit-id --name-only -r HEAD); do
+                if [[ $file == *.py ]]; then
+                    # Copy the modified file
+                    cp $file $file
+                    # Print what you've done with the file
+                    echo "Copied $file to $file"
+                    echo "Content of $file after copying:"
+                    cat $file
+                fi
+            done
+            # Zip the directory again
+            zip -r updated_lambda.zip .
+            # Upload the updated zip to S3
+            aws s3 cp updated_lambda.zip s3://$S3_BUCKET/$S3_KEY
+            # Update Lambda function code
+            aws lambda update-function-code --function-name $LAMBDA_FUNCTION_NAME --s3-bucket $S3_BUCKET --s3-key $S3_KEY
+            # Cleanup
+            rm existing_lambda.zip updated_lambda.zip
+          else
+            echo "existing_lambda.zip does not exist or is not a valid zip file"
+            exit 1
+          fi
