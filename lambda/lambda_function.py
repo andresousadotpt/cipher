@@ -41,5 +41,5 @@ def lambda_handler(event, context):
     else:
         return {
             'statusCode': 200,
-            'body': json.dumps("Invalid action. Please use 'encrypt' or 'decrypt' as action. " + event)
+            'body': json.dumps("Invalid action. Please use 'encrypt' or 'decrypt' as action. ")
         }
