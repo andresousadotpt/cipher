@@ -1,0 +1,23 @@
+
+9
+	README.md,8\e\8ec9a00bfd09b3190ac6b22251dbb1aa95a0579d
+>
+lambda/main.py,c\2\c274c861ece9b311d85721de6aa80559c61a2ad1
+>
+lambda/util.py,1\5\15be8ab00428be0cfebdbbdba6ada10f9505a249
+A
+lambda/encrypt.py,5\4\54c8658734c802f90603c6c91953d65c575f9f9c
+G
+lambda/requirements.txt,6\e\6ef82500efea1538f00c306f0ef97861edca7acd
+@
+lambda/cipher.py,2\c\2c1d0245f26500fd9c17cef7718aeed01eb56d97
+A
+lambda/decrypt.py,2\7\277d9c39e464571c903da5e74d743a1c5ad95172
+?
+lambda/NOTES.md,6\8\68cc59859ac2734d243f3ce446c8d6409ba2a81a
+B
+lambda/__init__.py,6\2\627d46c21e561ff563fe287b40d6381b52bb0946
+I
+lambda/lambda_function.py,3\6\3650197c20c6a98a4087bab3c62c9ad0d6e2880b
+S
+#.github/workflows/deploy-lambda.yml,5\a\5ab8f63293a8b6ae88fa7f1f51de5feedb85c0d7
