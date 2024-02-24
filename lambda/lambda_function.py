@@ -35,7 +35,7 @@ def lambda_handler(event, context):
     elif action == 'hello':
         return {
             'statusCode': 400,
-            'body': json.dumps("HELLO")
+            'body': json.dumps("Hello this is in good condition :)")
         }
     else:
         return {
