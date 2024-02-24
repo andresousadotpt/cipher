@@ -32,11 +32,6 @@ def lambda_handler(event, context):
                 'statusCode': 400,
                 'body': json.dumps("An error occurred during decryption. Please check your input.")
             }
-    elif action == 'hello':
-        return {
-            'statusCode': 400,
-            'body': json.dumps("Hello this is in good condition :)")
-        }
     else:
         return {
             'statusCode': 200,
