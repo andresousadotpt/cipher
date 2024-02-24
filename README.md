@@ -1,6 +1,14 @@
 # Cipher
 
-Cipher is a web application that provides encryption and decryption services. It has a frontend available at [cipher.andresousa.pt](https://cipher.andresousa.pt).
+Cipher is a simple yet powerful web application that provides encryption and decryption services. It's available at [cipher.andresousa.pt](https://cipher.andresousa.pt).
+
+## Motivation
+
+In the digital age, the security of sensitive information is paramount. We often rely on various online services to handle our data, but the question remains - are these services truly secure? Can we trust them not to store our secret data?
+
+Cipher was born out of these concerns. It's not just another service; it's a commitment to data privacy and security. Cipher provides a platform where users can encrypt and decrypt their sensitive information without the worry of their data being stored.
+
+With Cipher, your data is yours and yours alone. We don't store it; we just help you protect it. It's a simple solution for a complex problem, aiming to foster a safer digital environment where privacy is not just a promise, but a practice.
 
 
 ## Contributing
