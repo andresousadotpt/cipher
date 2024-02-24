@@ -5,7 +5,7 @@ on:
     branches:
       - main
     paths:
-      - '**.py' # Change to the file extension of the language that you are using.
+      - '**.py'
 
 jobs:
   deploy:
@@ -15,16 +15,16 @@ jobs:
       - name: Checkout Repository
         uses: actions/checkout@v2
         with:
-          fetch-depth: 2 # To fetch the current commit and its parent (so we can compare)
+          fetch-depth: 2
 
       - name: Setup AWS CLI
         uses: aws-actions/configure-aws-credentials@v1
         with:
           aws-access-key-id: ${{ secrets.AWS_ACCESS_KEY_ID }}
           aws-secret-access-key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
-          aws-region: eu-west-2 # Modify this to your desired AWS region
+          aws-region: eu-west-2
 
-      - name: Print changed files # To properly debug what is being deployed (It can be removed).
+      - name: Print changed files
         run: |
           echo "List of changed files:" 
           echo $(git diff --name-only HEAD^ HEAD)
